@@ -67,7 +67,13 @@ int main() {
 * colors: vector<Color>&. Passed by reference because the function
 * will modify the vector by adding new elements.
 *
-* Return:
+* Why did I not use Pass-by-Value: This would create a complete copy of 
+* --------------------------------
+* the colors vector. Since the vector's size is random (between 25 and 50), 
+* this could involve copying a significant amount of data. This creates 
+* unnecessary overhead and is less efficient.
+*
+* Return: 
 * None.
 **********************************************************************/
 void generateRandomColors(vector<Color>& colors) {
@@ -94,6 +100,14 @@ void generateRandomColors(vector<Color>& colors) {
 *
 * Parameters:
 * colors: const vector<Color>&. Passed by constant reference.
+*
+* Why did I use Pass-by-Constant-Reference?: It allows the function to 
+* -----------------------------------------
+* access the original vector without making a copy, which is highly efficient. 
+* The const keyword is crucial because it guarantees that the function will 
+* not accidentally modify the vector. This fulfills two of my coding conventions: 
+* it's a mindful use of pass-by-reference for a large object, and the const keyword 
+* ensures the variable is not changed by the function.
 *
 * Return:
 * None.
